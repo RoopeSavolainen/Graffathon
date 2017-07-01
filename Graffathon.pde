@@ -10,7 +10,7 @@ AudioController ac;
 double time;
 PShape detailShip;
 
-PVector cameraPos = new PVector(0, 0, 0);
+PVector cameraPos = new PVector(320, -240, -3000);
 PVector cameraLookAt = new PVector(0, 0, 0);
 
 MovementTracker cam = new MovementTracker(cameraPos, cameraLookAt);
@@ -23,9 +23,10 @@ void setup()
   smooth();
   colorMode(RGB, 255);
   
-  route.add(new PVector(320.0, -240.0, -1000.0));
-  route.add(new PVector(320.0, -240.0, -100.0));
-  route.add(new PVector(640.0, -240.0, -100.0));
+  route.add(new PVector(320.0, -240.0, -3000.0));
+  route.add(new PVector(320.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 3000.0));
   cam.route = route;
   
   detailShip = loadShape("ship.obj");
