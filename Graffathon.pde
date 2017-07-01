@@ -5,8 +5,6 @@ Moonlander ml;
 Terrain terrain;
 Sky sky;
 
-AudioController ac;
-
 double time;
 PShape detailShip;
 
@@ -29,18 +27,17 @@ void setup()
   cam.route = route;
   
   detailShip = loadShape("ship.obj");
-  terrain = new Terrain(10000, 10000);
+  terrain = new Terrain(5000, 5000);
   sky = new Sky();
 
-  ml = new Moonlander(this, new TimeController(4));
+  ml = Moonlander.initWithSoundtrack(this, "Exit the Premises.mp3", 128, 4);
   ml.start();
-  
-  ac = new AudioController(new Minim(this), ml);
 }
 
 void draw()
 {
   ml.update();
+  
   time = ml.getValue("time");
   
   double cameraLerp = ml.getValue("camera");
@@ -72,6 +69,6 @@ void draw()
 
   popMatrix();
   
-  terrain.draw();
   sky.draw(cameraPos);
+  terrain.draw();
 }
