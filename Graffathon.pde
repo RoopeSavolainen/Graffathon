@@ -78,22 +78,17 @@ void draw()
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
   
-<<<<<<< Updated upstream
-  ambientLight(255 * ac.getBassIntensity(), 255 * ac.getMidIntensity(), 255 * ac.getTrebleIntensity());
-=======
   float f = (ac.getBassIntensity() > 0.3 ? pow(ac.getBassIntensity(), 0.5) : 0.1); // * ac.getBassIntensity();
   float ambient = f * 255;
   ambientLight(ambient, ambient, ambient);
   //ambientLight(128 * ac.getBassIntensity(), 128 * ac.getMidIntensity(), 128 * ac.getTrebleIntensity());
->>>>>>> Stashed changes
+
   pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
 
   c.draw(cameraPos);
   s.draw();
 
-<<<<<<< Updated upstream
-  sky.draw(cameraPos);
-=======
+
 /*=======
  // cam.update();
   PVector pos = new PVector(-100, -450, -150 + millis()/ 24124124);
@@ -108,7 +103,7 @@ void draw()
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
   sky.draw(cameraPos, skyIntensity);
->>>>>>> Stashed changes
+
   grid.draw(cameraPos);
   mountains.draw(cameraPos);
   
