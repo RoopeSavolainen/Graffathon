@@ -3,7 +3,7 @@
 varying vec4 vertPos;
 
 void main() {
-  float lerp_v = clamp((-vertPos.y + 250) / 1700.0, 0.0, 1.0);
+  float lerp_v = clamp((-vertPos.y + 0) / 2200.0, 0.0, 1.0);
   lerp_v = pow(lerp_v, 0.5);
 
   vec3 fromColor = vec3(255 / 255.0, 100 / 255.0, 116 / 255.0) * 1;
