@@ -4,6 +4,11 @@
 			<key row="0" value="1" interpolation="1"/>
 			<key row="511" value="64" interpolation="0"/>
 		</track>
+		<track name="camera">
+			<key row="0" value="0" interpolation="1"/>
+			<key row="50" value="1" interpolation="1"/>
+			<key row="100" value="2" interpolation="0"/>
+		</track>
 	</tracks>
 	<bookmarks/>
 </sync>

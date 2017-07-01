@@ -2,9 +2,17 @@ import ddf.minim.*;
 import moonlander.library.*;
 
 Moonlander ml;
+Terrain terrain;
+Sky sky;
 
 double time;
 PShape detailShip;
+
+PVector cameraPos = new PVector(0, 0, 0);
+PVector cameraLookAt = new PVector(0, 0, 0);
+
+MovementTracker cam = new MovementTracker(cameraPos, cameraLookAt);
+ArrayList<PVector> route = new ArrayList();
 
 void setup()
 {
@@ -13,9 +21,16 @@ void setup()
   smooth();
   colorMode(RGB, 255);
   
-  detailShip = loadShape("ship.obj");
+  route.add(new PVector(320.0, -240.0, -1000.0));
+  route.add(new PVector(320.0, -240.0, -100.0));
+  route.add(new PVector(640.0, -240.0, -100.0));
+  cam.route = route;
   
-  ml = Moonlander.initWithSoundtrack(this, "test.wav", 60, 4);
+  detailShip = loadShape("ship.obj");
+  terrain = new Terrain(10000, 10000);
+  sky = new Sky();
+
+  ml = Moonlander.initWithSoundtrack(this, "test.mp3", 60, 4);
   ml.start();
 }
 
@@ -24,14 +39,24 @@ void draw()
   ml.update();
   time = ml.getValue("time");
   
-  background(0);
+  double cameraLerp = ml.getValue("camera");
   
+  background(0);
+ 
+  cam.update((float)cameraLerp);
+  camera(cameraPos.x, cameraPos.y, cameraPos.z, cameraLookAt.x, cameraLookAt.y, cameraLookAt.z, 0, 1, 0);
+
   pushMatrix();
   
   translate(width/2.0, height/2.0);
   
   ambientLight(64, 64, 64);
-  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
+  pointLight(255, 255, 255, width/2*sin((float)time/10), -50, 0);
+  
+  pushMatrix();
+  translate(0, 100, 0);
+  box(1000.0, 1.0, 1000.0);
+  popMatrix();
   
   pushMatrix();
   translate(0, 50, 0);
@@ -40,6 +65,9 @@ void draw()
   scale(4);
   shape(detailShip, 0, 0);
   popMatrix();
-    
+
   popMatrix();
+  
+  terrain.draw();
+  sky.draw(cameraPos);
 }
