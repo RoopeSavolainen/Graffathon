@@ -4,11 +4,18 @@ import moonlander.library.*;
 Moonlander ml;
 
 double time;
+PShape detailShip;
 
 void setup()
 {
-  size(640, 480, P2D);
-  ml = Moonlander.initWithSoundtrack(this, "test.mp3", 60, 8);
+  size(640, 480, P3D);
+  frameRate(60);
+  smooth();
+  colorMode(RGB, 255);
+  
+  detailShip = loadShape("ship.obj");
+  
+  ml = Moonlander.initWithSoundtrack(this, "test.wav", 60, 4);
   ml.start();
 }
 
@@ -17,14 +24,22 @@ void draw()
   ml.update();
   time = ml.getValue("time");
   
+  background(0);
+  
   pushMatrix();
-  scale(sin((float)time) + 1);
-  translate(50, 50);
   
-  background(255);
-  noStroke();
-  fill(0, 0, 255);
-  rect(0, 0, 50, 50);
+  translate(width/2.0, height/2.0);
   
+  ambientLight(64, 64, 64);
+  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
+  
+  pushMatrix();
+  translate(0, 50, 0);
+  rotateY((float)time/2*PI);
+  rotateX(radians(-15));
+  scale(4);
+  shape(detailShip, 0, 0);
+  popMatrix();
+    
   popMatrix();
 }

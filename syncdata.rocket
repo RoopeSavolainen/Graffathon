@@ -1,8 +1,8 @@
-<sync rows="128">
+<sync rows="512">
 	<tracks>
 		<track name="time">
 			<key row="0" value="1" interpolation="1"/>
-			<key row="74" value="10" interpolation="0"/>
+			<key row="511" value="64" interpolation="0"/>
 		</track>
 	</tracks>
 	<bookmarks/>
