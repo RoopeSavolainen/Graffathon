@@ -11,9 +11,9 @@
 			<key row="150" value="3" interpolation="0"/>
 		</track>
 		<track name="ship">
-			<key row="0" value="0" interpolation="0"/>
-			<key row="33" value="1" interpolation="0"/>
-			<key row="80" value="2" interpolation="0"/>
+			<key row="0" value="0" interpolation="1"/>
+			<key row="33" value="1" interpolation="1"/>
+			<key row="80" value="2" interpolation="1"/>
 			<key row="123" value="3" interpolation="0"/>
 		</track>
 	</tracks>
