@@ -49,7 +49,7 @@ void setup()
                              new PVector(c.getBlockDist(goal), -200 * i, c.getBlockDist(axis))));
   }
 
-  ml = new Moonlander(this, new TimeController(4));
+  ml = new Moonlander(this, new TimeController(10));
   ml.start();
   
   ac = new AudioController(new Minim(this));
