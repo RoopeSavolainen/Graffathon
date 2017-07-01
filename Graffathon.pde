@@ -5,6 +5,8 @@ Moonlander ml;
 Terrain terrain;
 Sky sky;
 
+AudioController ac;
+
 double time;
 PShape detailShip;
 
@@ -30,8 +32,10 @@ void setup()
   terrain = new Terrain(10000, 10000);
   sky = new Sky();
 
-  ml = Moonlander.initWithSoundtrack(this, "test.mp3", 60, 4);
+  ml = new Moonlander(this, new TimeController(4));
   ml.start();
+  
+  ac = new AudioController(new Minim(this), ml);
 }
 
 void draw()

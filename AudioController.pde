@@ -21,7 +21,7 @@ class AudioController {
     //sp.osc.setWaveform(Waves.SQUARE);
     //sp.fm.setWaveform(Waves.PHASOR);
     //sp2.playNote(noteToFrequency((float)ml.getValue("SynthPadN2")), (float)ml.getValue("SynthPadV2"));
-    print(ml.getValue("SynthPadV") + " " + ml.getValue("SynthPadN") + "\n");
+    //print(ml.getValue("SynthPadV") + " " + ml.getValue("SynthPadN") + "\n");
   }
   
   float noteToFrequency(float note) {
