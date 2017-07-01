@@ -6,6 +6,8 @@ Terrain terrain;
 Sky sky;
 ArrayList<ShipRow> shipRows = new ArrayList<ShipRow>();
 
+AudioController ac;
+
 double time;
 
 PVector cameraPos = new PVector(320, -120, -3000);
@@ -43,7 +45,7 @@ void setup()
   route.add(new PVector(3000.0, -120.0, 200.0));
   route.add(new PVector(3000.0, -120.0, 3000.0));
   cam.setWayPoints(route);  
-  
+
   shipRoute.add(new PVector(320.0, -120.0, -1000.0));
   shipRoute.add(new PVector(320.0, -120.0, 1000.0));
   shipRoute.add(new PVector(-2000.0, -120.0, 1000.0));
@@ -55,32 +57,24 @@ void setup()
 void draw()
 {
   ml.update();
+  ac.update();
   
   time = ml.getValue("time");
   background(0);
-//<<<<<<< Updated upstream
   
   cam.update();
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
-  ambientLight(64, 64, 64);
   
+  ambientLight(128 * ac.getBassIntensity(), 128 * ac.getMidIntensity(), 128 * ac.getTrebleIntensity());
+  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
+
   c.draw(cameraPos);
   s.draw();
-/*=======
- // cam.update();
-  PVector pos = new PVector(-100, -450, -150 + millis()/ 24124124);
-  camera(
-    pos.x, pos.y, pos.z, //width/2.0, -height/2.0, -2200, // (height/2.0) / tan(PI*30.0 / 180.0), 
-    pos.x + 50, 0, pos.z + 800, 
-    0, 1, 0);
-
-  directionalLight(153, 192, 255, -0.5, 1, 0.5);
-  pushMatrix();
->>>>>>> Stashed changes */
 
   sky.draw(cameraPos);
   terrain.draw();
+
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
   }
