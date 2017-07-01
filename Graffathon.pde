@@ -9,11 +9,6 @@ ArrayList<ShipRow> shipRows = new ArrayList<ShipRow>();
 
 AudioController ac;
 
-double time;
-
-PVector cameraPos = new PVector(320, -120, -3000);
-PVector cameraLookAt = new PVector(0, 0, 0);
-
 CameraController cam;
 
 City c = new City(0.45, 5);
@@ -54,7 +49,7 @@ void setup()
   
   ac = new AudioController(new Minim(this));
   
-  cam = new CameraController(cameraPos, cameraLookAt, ml);
+  cam = new CameraController(new PVector(320.0, -120.0, -3000.0), new PVector(0.0, 0.0, 0.0), ml);
   s = new Ship(new PVector(320.0, -120.0, -2000.0), ml);
   
   currentScene = new FollowScene(cam, ac, s, c);
@@ -67,35 +62,26 @@ void draw()
   ml.update();
   ac.update();
   
-  time = ml.getValue("time");
   background(0);
   
   currentScene = currentScene.update();
   cam.update();
-
-  println(cam.pos.x, " : ", cam.pos.y, " : ", cam.pos.z);
-  println(cameraPos.x, " : ", cameraPos.y, " : ", cameraPos.z);
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
   
   float f = (ac.getBassIntensity() > 0.3 ? pow(ac.getBassIntensity(), 0.5) : 0.1); // * ac.getBassIntensity();
   float ambient = f * 255;
   ambientLight(ambient, ambient, ambient);
-  //ambientLight(128 * ac.getBassIntensity(), 128 * ac.getMidIntensity(), 128 * ac.getTrebleIntensity());
-
-  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
-
-  c.draw(cameraPos);
+  c.draw(cam.pos);
   s.draw();
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
-  sky.draw(cameraPos, skyIntensity);
+  sky.draw(cam.pos, skyIntensity);
 
-  grid.draw(cameraPos);
-  mountains.draw(cameraPos);
+  grid.draw(cam.pos);
+  mountains.draw(cam.pos);
   
-  /*
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
-  }*/
+  }
 }
