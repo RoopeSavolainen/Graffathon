@@ -1,6 +1,7 @@
 
 class Terrain {
-  public final int GridCellSize = 100;
+  public final int GridCellSize = 50;
+  
   public final float[] heightMap;
   public final int sizeX, sizeY;
   public final int hmapSizeX, hmapSizeY;
@@ -49,13 +50,21 @@ class Terrain {
       return this.heightMap[x + y * this.hmapSizeX] + 0.1;
     }
     
+    private final float HeightMapBias = 100;
     private float[] generateHeightMap(int sizeX, int sizeY) {
       sizeX++; sizeY++;
       
       float[] hmap = new float[sizeX * sizeY];
       for(int y = 0; y < sizeY; y++) {
         for(int x = 0; x < sizeX; x++) {
-          hmap[x + y * sizeX] = noise(x, y) * 100;
+          float distFromCenter = new PVector(sizeX / 2, sizeY / 2).dist(new PVector(x, y)) / (sizeX / 2);
+          
+          float multiplier = 10;
+          if(distFromCenter > 0.8) {
+           multiplier = 300; // lerp(10, 300, (distFromCenter - 0.8) * 5);
+          }
+          
+          hmap[x + y * sizeX] = noise(x * GridCellSize / HeightMapBias, y * GridCellSize / HeightMapBias) * multiplier;
         }
       }
       
