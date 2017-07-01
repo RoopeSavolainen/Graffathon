@@ -6,7 +6,7 @@ class City
   private final static float h_avg = 150;
   private final static float h_stdev = 100;
   
-  private final static int drawAmount = 10;
+  private final static int drawAmount = 20;
   
   private float density;
   private int blockSize;
@@ -87,12 +87,12 @@ class House
   {
     w = _w;
     d = _d;
-    h = _h;
+    h = -_h;
   }
   void draw()
   {
     pushMatrix();
-    translate(0.0, -h/2.0, 0.0);
+    translate(0.0, h/2.0, 0.0);
     stroke(128, 64, 64);
     shapeMode(CENTER);
     box(w,h,d);

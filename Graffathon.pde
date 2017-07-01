@@ -6,13 +6,16 @@ Terrain terrain;
 Sky sky;
 
 double time;
-PShape detailShip;
 
-PVector cameraPos = new PVector(320, -240, -2000);
+PVector cameraPos = new PVector(320, -120, -2000);
 PVector cameraLookAt = new PVector(0, 0, 0);
 
 CameraController cam;
 ArrayList<PVector> route = new ArrayList();
+
+City c = new City(0.45, 5);
+Ship s;
+ArrayList<PVector> shipRoute = new ArrayList();
 
 void setup()
 {
@@ -21,7 +24,6 @@ void setup()
   smooth();
   colorMode(RGB, 255);
   
-  detailShip = loadShape("ship.obj");
   terrain = new Terrain(6000, 6000);
   sky = new Sky();
 
@@ -29,12 +31,19 @@ void setup()
   ml.start();
   
   cam = new CameraController(cameraPos, cameraLookAt, ml);
+  s = new Ship(new PVector(320.0, -120.0, 0.0), ml);
   
-  route.add(new PVector(320.0, -240.0, -2000.0));
-  route.add(new PVector(320.0, -240.0, 200.0));
-  route.add(new PVector(3000.0, -240.0, 200.0));
-  route.add(new PVector(3000.0, -240.0, 3000.0));
+  route.add(new PVector(320.0, -120.0, -2000.0));
+  route.add(new PVector(320.0, -120.0, 200.0));
+  route.add(new PVector(3000.0, -120.0, 200.0));
+  route.add(new PVector(3000.0, -120.0, 3000.0));
   cam.setWayPoints(route);
+  
+  
+  shipRoute.add(new PVector(320.0, -120.0, 0.0));
+  shipRoute.add(new PVector(320.0, -120.0, 1000.0));
+  shipRoute.add(new PVector(-2000.0, -120.0, 1000.0));
+  s.setWayPoints(shipRoute);
 }
 
 void draw()
@@ -43,24 +52,25 @@ void draw()
   
   time = ml.getValue("time");
   background(0);
+  
   cam.update();
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
-  pushMatrix();
+  ambientLight(16, 16, 16);
+  
+  c.draw(cameraPos);
+  s.draw();
 
-  ambientLight(64, 64, 64);
-  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
-
+  /*
   pushMatrix();
   translate(0, 50, 0);
   rotateY((float)time/2*PI);
   rotateX(radians(-15));
   scale(4);
   shape(detailShip, 0, 0);
-  popMatrix();
+  popMatrix();*/
 
-  popMatrix();
-  
+  terrain.draw();
   sky.draw(cameraPos);
   terrain.draw();
 }
