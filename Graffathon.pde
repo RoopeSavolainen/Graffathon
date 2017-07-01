@@ -37,6 +37,8 @@ void setup()
   ml = Moonlander.initWithSoundtrack(this, "Exit the Premises.mp3", 128, 4);
   ml.start();
   
+  ac = new AudioController(new Minim(this));
+  
   cam = new CameraController(cameraPos, cameraLookAt, ml);
   s = new Ship(new PVector(320.0, -120.0, -2000.0), ml);
   
