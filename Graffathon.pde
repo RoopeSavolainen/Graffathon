@@ -2,6 +2,7 @@ import ddf.minim.*;
 import moonlander.library.*;
 
 Moonlander ml;
+Terrain terrain;
 
 double time;
 PShape detailShip;
@@ -12,10 +13,11 @@ void setup()
   frameRate(60);
   smooth();
   colorMode(RGB, 255);
-  
+
   detailShip = loadShape("ship.obj");
-  
-  ml = Moonlander.initWithSoundtrack(this, "test.wav", 60, 4);
+  terrain = new Terrain(10000, 10000);
+
+  ml = Moonlander.initWithSoundtrack(this, "test.mp3", 60, 4);
   ml.start();
 }
 
@@ -40,6 +42,7 @@ void draw()
   scale(4);
   shape(detailShip, 0, 0);
   popMatrix();
-    
+
   popMatrix();
+  terrain.draw();
 }
