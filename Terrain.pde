@@ -60,7 +60,6 @@ class Terrain {
         for(int x = 0; x < sizeX; x++) {
           PVector cur = new PVector(x, y);
           float distFromCenter = center.dist(cur) / (sizeX / 2);
-          println("x = " + x + ", y = " +y  + ", distFromCenter = " + distFromCenter);
           
           float multiplier = 10;
           float baseAdd = 0;
