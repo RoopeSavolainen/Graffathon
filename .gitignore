@@ -6,3 +6,10 @@ application.windows32
 application.windows64
 application.macosx
 *.properties
+
+*.autosave
+
+.gitignore
+
+*.mp3
+*.wav
