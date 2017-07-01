@@ -1,7 +1,6 @@
 class City
 {
   private final static float w = 25;
-  private final static float d = 25;
   
   private final static float h_avg = 150;
   private final static float h_stdev = 100;
@@ -28,7 +27,7 @@ class City
     genHouses(_x, _z);
     
     int x_index = floor((float)_x / (w/density));
-    int z_index = floor((float)_z / (d/density));
+    int z_index = floor((float)_z / (w/density));
     x_index -= floor(x_index/blockSize);
     z_index -= floor(z_index/blockSize);
     
@@ -55,10 +54,15 @@ class City
     }
   }
   
+  public float getBlockDist(int n)
+  {
+    return w/density * ((float)blockSize * n - 0.5);
+  }
+  
   void genHouses(float _x, float _z)
   {
     int x_index = floor(_x / (w/density));
-    int z_index = floor(_z / (d/density));
+    int z_index = floor(_z / (w/density));
     x_index -= floor(x_index/blockSize);
     z_index -= floor(z_index/blockSize);
     
@@ -73,7 +77,7 @@ class City
         if (houses.get(x).get(z) == null)
         {
           float h = randomGaussian() * h_stdev + h_avg;
-          houses.get(x).put(z, new House(w, d, h));
+          houses.get(x).put(z, new House(w, w, h));
         }
       }
     }
