@@ -46,7 +46,7 @@ class City
           continue;
         }
         pushMatrix();
-        translate(0.0, 0.0, z * (d/density));
+        translate(0.0, 0.0, z * (w/density));
         houses.get(x).get(z).draw();
         popMatrix();
       }

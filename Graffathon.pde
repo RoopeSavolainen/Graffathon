@@ -33,8 +33,9 @@ void setup()
   shipRows.add(new ShipRow(new PVector(-1500, -400, 0), new PVector(0, -400, 0)));
   shipRows.add(new ShipRow(new PVector(0, -400, -1500), new PVector(0, -400, 0)));
   shipRows.add(new ShipRow(new PVector(-1000, -400, -1000), new PVector(0, -400, 0)));
+  shipRows.add(new ShipRow(new PVector(c.getBlockDist(0), -100, c.getBlockDist(10)), new PVector(c.getBlockDist(0), -100, c.getBlockDist(10))));
 
-  ml = Moonlander.initWithSoundtrack(this, "Exit the Premises.mp3", 128, 4);
+  ml = new Moonlander(this, new TimeController(4));
   ml.start();
   
   ac = new AudioController(new Minim(this));
@@ -74,8 +75,8 @@ void draw()
   c.draw(cameraPos);
   s.draw();
 
-  sky.draw(cameraPos);
-  terrain.draw();
+  //sky.draw(cameraPos);
+  //terrain.draw();
 
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
