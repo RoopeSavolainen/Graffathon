@@ -59,6 +59,11 @@ class City
     return w/density * ((float)blockSize * n - 0.5);
   }
   
+  public void setActive(boolean value)
+  {
+    
+  }
+  
   void genHouses(float _x, float _z)
   {
     int x_index = floor(_x / (w/density));
@@ -87,6 +92,7 @@ class City
 class House
 {
   private float w, d, h;
+  private float current_h = 0;
   House(float _w, float _d, float _h)
   {
     w = _w;
