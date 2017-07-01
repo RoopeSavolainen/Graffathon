@@ -8,7 +8,7 @@ class MovementTracker
   private final static int prevSize = 15;
   private ArrayDeque<PVector> prevPos;
   
-  private final static float steeringPower = 0.00002;
+  private final static float steeringPower = 0.02;
   public float maxVel = 5;
   
   public ArrayList<PVector> route;

@@ -10,10 +10,10 @@ AudioController ac;
 double time;
 PShape detailShip;
 
-PVector cameraPos = new PVector(320, -240, -3000);
+PVector cameraPos = new PVector(320, -240, -2000);
 PVector cameraLookAt = new PVector(0, 0, 0);
 
-MovementTracker cam = new MovementTracker(cameraPos, cameraLookAt);
+CameraController cam;
 ArrayList<PVector> route = new ArrayList();
 
 void setup()
@@ -23,18 +23,20 @@ void setup()
   smooth();
   colorMode(RGB, 255);
   
-  route.add(new PVector(320.0, -240.0, -3000.0));
-  route.add(new PVector(320.0, -240.0, 200.0));
-  route.add(new PVector(3000.0, -240.0, 200.0));
-  route.add(new PVector(3000.0, -240.0, 3000.0));
-  cam.route = route;
-  
   detailShip = loadShape("ship.obj");
-  terrain = new Terrain(3000, 3000);
+  terrain = new Terrain(6000, 6000);
   sky = new Sky();
 
   ml = new Moonlander(this, new TimeController(4));
   ml.start();
+  
+  cam = new CameraController(cameraPos, cameraLookAt, ml);
+  
+  route.add(new PVector(320.0, -240.0, -2000.0));
+  route.add(new PVector(320.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 3000.0));
+  cam.setWayPoints(route);
   
   ac = new AudioController(new Minim(this), ml);
 }
@@ -43,37 +45,13 @@ void draw()
 {
   ml.update();
   time = ml.getValue("time");
-// <<<<<<< Updated upstream
-  
-  double cameraLerp = ml.getValue("camera");
-  
   background(0);
- 
-  cam.update((float)cameraLerp);
-  camera(cameraPos.x, cameraPos.y, cameraPos.z, cameraLookAt.x, cameraLookAt.y, cameraLookAt.z, 0, 1, 0);
-/* =======
-
-  background(0); 
-  PVector pos = new PVector(0, -400, -6000 + millis()/ 5);
-  camera(
-    pos.x, pos.y, pos.z, //width/2.0, -height/2.0, -2200, // (height/2.0) / tan(PI*30.0 / 180.0), 
-    pos.x, 0, pos.z + 1400, 
-    0, 1, 0);
->>>>>>> Stashed changes */
+  cam.update();
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
   pushMatrix();
 
   ambientLight(64, 64, 64);
-/*<<<<<<< Updated upstream
-  pointLight(255, 255, 255, width/2*sin((float)time/10), -50, 0);
-  
-  pushMatrix();
-  translate(0, 100, 0);
-  box(1000.0, 1.0, 1000.0);
-  popMatrix();
-  
-======= */
   pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
 
   pushMatrix();
