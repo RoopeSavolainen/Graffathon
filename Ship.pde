@@ -34,13 +34,11 @@ class Ship
     
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
-    scale(5);
+    scale(3);
     PVector diff = direction.copy().sub(pos);
     float rotY = atan2(diff.x, diff.z);
     rotateY(rotY);
     
-    
-    pointLight(128.0, 128.0, 128.0, 0.0, -20.0, 0.0);
     shape(model);
     popMatrix();
   }
