@@ -42,17 +42,11 @@ class MovementTracker
     
     PVector vel = pos.copy().sub(prevPos);
     
-    //print(vel.x, " : ", vel.y, " : ", vel.z, "\n");
-    
     float s = diff.copy().normalize().dot(vel);
     PVector wrong = diff.copy().normalize().mult(s);
     PVector steering = diff.copy().sub(wrong).limit(steeringPower);
     PVector newVel = vel.copy().add(steering).limit(steeringPower);
     PVector steered = pos.copy().add(newVel);
-    
-    print(steering.x, " : ", steering.y, " : ", steering.z, "\n");
-    print(vel.x, " : ", vel.y, " : ", vel.z, "\n");
-    print("\n");
     
     PVector newPos = PVector.lerp(steered, heading, lerpValue - prev);
     

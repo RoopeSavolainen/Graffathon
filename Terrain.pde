@@ -3,12 +3,12 @@ class Terrain {
   public final int GridCellSize = 50;
   
   public final float[] heightMap;
-  public final int sizeX, sizeY;
+  public final int _sizeX, _sizeY;
   public final int hmapSizeX, hmapSizeY;
   
   public Terrain(int sizeX, int sizeY) {
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
+    this._sizeX = sizeX;
+    this._sizeY = sizeY;
     
     this.hmapSizeX = sizeX / GridCellSize;
     this.hmapSizeY = sizeY / GridCellSize;
@@ -18,7 +18,7 @@ class Terrain {
   
   void draw() {
     pushMatrix();
-    translate(-this.sizeX / 2, 0, -this.sizeY / 2);
+    translate(-this._sizeX / 2, 0, -this._sizeY / 2);
     
     stroke(255, 0, 0); // red stroke
     strokeWeight(2); // 2px 
@@ -44,27 +44,33 @@ class Terrain {
     }
     
     private float getZ(int x, int y) {
-   // x = constrain(x, 0, this.hmapSizeX - 1);
-   // y = constrain(y, 0, this.hmapSizeY - 1);
+    x = constrain(x, 0, this.hmapSizeX - 1);
+    y = constrain(y, 0, this.hmapSizeY - 1);
      
       return this.heightMap[x + y * this.hmapSizeX] + 0.1;
     }
     
     private final float HeightMapBias = 100;
     private float[] generateHeightMap(int sizeX, int sizeY) {
-      sizeX++; sizeY++;
+    //  sizeX++; sizeY++;
       
       float[] hmap = new float[sizeX * sizeY];
+      PVector center = new PVector(sizeX, sizeY).div(2);
       for(int y = 0; y < sizeY; y++) {
         for(int x = 0; x < sizeX; x++) {
-          float distFromCenter = new PVector(sizeX / 2, sizeY / 2).dist(new PVector(x, y)) / (sizeX / 2);
+          PVector cur = new PVector(x, y);
+          float distFromCenter = center.dist(cur) / (sizeX / 2);
+          println("x = " + x + ", y = " +y  + ", distFromCenter = " + distFromCenter);
           
           float multiplier = 10;
-          if(distFromCenter > 0.8) {
-           multiplier = 300; // lerp(10, 300, (distFromCenter - 0.8) * 5);
+          float baseAdd = 0;
+          if(distFromCenter > 0.6) {
+            float lerpVal = (distFromCenter - 0.6) * 5;
+             multiplier = lerp(10, 400,  lerpVal);
+             baseAdd += lerp(0, -500, constrain(lerpVal, 0, 1));
           }
           
-          hmap[x + y * sizeX] = noise(x * GridCellSize / HeightMapBias, y * GridCellSize / HeightMapBias) * multiplier;
+          hmap[x + y * sizeX] = noise(x * GridCellSize / HeightMapBias, y * GridCellSize / HeightMapBias) * multiplier + baseAdd;
         }
       }
       
