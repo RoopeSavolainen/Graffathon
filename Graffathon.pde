@@ -2,7 +2,8 @@ import ddf.minim.*;
 import moonlander.library.*;
 
 Moonlander ml;
-Terrain terrain;
+Terrain grid;
+Terrain mountains;
 Sky sky;
 ArrayList<ShipRow> shipRows = new ArrayList<ShipRow>();
 
@@ -27,7 +28,8 @@ void setup()
   smooth();
   colorMode(RGB, 255);
 
-  terrain = new Terrain(6000, 6000);
+  grid = new Terrain(8000, 8000, false);
+  mountains = new Terrain(8000, 8000, true);
 
   sky = new Sky();
   shipRows.add(new ShipRow(new PVector(-1500, -400, 0), new PVector(0, -400, 0)));
@@ -75,9 +77,22 @@ void draw()
   c.draw(cameraPos);
   s.draw();
 
-  //sky.draw(cameraPos);
-  //terrain.draw();
+/*=======
+ // cam.update();
+  PVector pos = new PVector(-100, -450, -150 + millis()/ 24124124);
+  camera(
+    pos.x, pos.y, pos.z, //width/2.0, -height/2.0, -2200, // (height/2.0) / tan(PI*30.0 / 180.0), 
+    pos.x + 50, 0, pos.z + 800, 
+    0, 1, 0);
 
+  directionalLight(153, 192, 255, -0.5, 1, 0.5);
+  pushMatrix();
+>>>>>>> Stashed changes */
+
+  sky.draw(cameraPos);
+  grid.draw(cameraPos);
+  mountains.draw(cameraPos);
+  
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
   }
