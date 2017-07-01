@@ -30,10 +30,21 @@ void setup()
   terrain = new Terrain(6000, 6000);
 
   sky = new Sky();
+  
   shipRows.add(new ShipRow(new PVector(-1500, -400, 0), new PVector(0, -400, 0)));
   shipRows.add(new ShipRow(new PVector(0, -400, -1500), new PVector(0, -400, 0)));
   shipRows.add(new ShipRow(new PVector(-1000, -400, -1000), new PVector(0, -400, 0)));
-  shipRows.add(new ShipRow(new PVector(c.getBlockDist(0), -100, c.getBlockDist(10)), new PVector(c.getBlockDist(0), -100, c.getBlockDist(10))));
+  
+  randomSeed(0);
+  for (int i = 0; i < 4; i++) {
+    int axis = (int)random(-10,5);
+    int start = (int)random(-20,20);
+    int goal = (int)random(-20,20);
+    shipRows.add(new ShipRow(new PVector(c.getBlockDist(axis), -100 * i, c.getBlockDist((start))),
+                             new PVector(c.getBlockDist(axis), -100 * i, c.getBlockDist((goal)))));
+    shipRows.add(new ShipRow(new PVector(c.getBlockDist(start), -100 * i, c.getBlockDist(axis)),
+                             new PVector(c.getBlockDist(goal), -100 * i, c.getBlockDist(axis))));
+  }
 
   ml = new Moonlander(this, new TimeController(4));
   ml.start();
@@ -75,8 +86,8 @@ void draw()
   c.draw(cameraPos);
   s.draw();
 
-  //sky.draw(cameraPos);
-  //terrain.draw();
+  sky.draw(cameraPos);
+  terrain.draw();
 
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
