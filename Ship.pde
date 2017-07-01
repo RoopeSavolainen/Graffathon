@@ -26,6 +26,11 @@ class Ship
     movement.route = waypoints;
   }
   
+  public void addWayPoint(PVector p)
+  {
+    waypoints.add(p);
+  }
+  
   void draw()
   {
         

@@ -49,7 +49,7 @@ class ShipRow {
     
     PVector diff = to.copy().sub(from);
     float rotationX = atan2(diff.x, diff.z);
-    println(rotationX + " " + to.copy().sub(from));
+    // println(rotationX + " " + to.copy().sub(from));
     for(int i = 0; i < ships.size(); i++) {
      // ship.progress += BaseSpeed * ship.speedMultiplier;
       ships.get(i).draw(
