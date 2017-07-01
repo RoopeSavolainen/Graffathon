@@ -5,7 +5,7 @@ class MovementTracker
   
   private PVector prevPos;
   
-  private final static float steeringPower = 0.02; 
+  private final static float steeringPower = 0.2; 
   
   public ArrayList<PVector> route;
   public PVector fixedTarget;
@@ -47,10 +47,11 @@ class MovementTracker
     float s = diff.copy().normalize().dot(vel);
     PVector wrong = diff.copy().normalize().mult(s);
     PVector steering = diff.copy().sub(wrong).limit(steeringPower);
-    PVector steered = pos.copy().add(vel).add(steering);
+    PVector newVel = vel.copy().add(steering).limit(steeringPower);
+    PVector steered = pos.copy().add(newVel);
     
     print(steering.x, " : ", steering.y, " : ", steering.z, "\n");
-    print(vel.x, " : ", vel.y, " : ", vel.z, "n");
+    print(vel.x, " : ", vel.y, " : ", vel.z, "\n");
     print("\n");
     
     PVector newPos = PVector.lerp(steered, heading, lerpValue - prev);
