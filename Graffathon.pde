@@ -18,7 +18,7 @@ ArrayList<PVector> route = new ArrayList();
 
 void setup()
 {
-  size(640, 480, P3D);
+  size(1280, 720, P3D);
   frameRate(60);
   smooth();
   colorMode(RGB, 255);
@@ -30,7 +30,7 @@ void setup()
   cam.route = route;
   
   detailShip = loadShape("ship.obj");
-  terrain = new Terrain(10000, 10000);
+  terrain = new Terrain(3000, 3000);
   sky = new Sky();
 
   ml = new Moonlander(this, new TimeController(4));
@@ -43,6 +43,7 @@ void draw()
 {
   ml.update();
   time = ml.getValue("time");
+// <<<<<<< Updated upstream
   
   double cameraLerp = ml.getValue("camera");
   
@@ -50,12 +51,21 @@ void draw()
  
   cam.update((float)cameraLerp);
   camera(cameraPos.x, cameraPos.y, cameraPos.z, cameraLookAt.x, cameraLookAt.y, cameraLookAt.z, 0, 1, 0);
+/* =======
 
+  background(0); 
+  PVector pos = new PVector(0, -400, -6000 + millis()/ 5);
+  camera(
+    pos.x, pos.y, pos.z, //width/2.0, -height/2.0, -2200, // (height/2.0) / tan(PI*30.0 / 180.0), 
+    pos.x, 0, pos.z + 1400, 
+    0, 1, 0);
+>>>>>>> Stashed changes */
+
+  directionalLight(153, 192, 255, 0.5, 1, 0.5);
   pushMatrix();
-  
-  translate(width/2.0, height/2.0);
-  
+
   ambientLight(64, 64, 64);
+/*<<<<<<< Updated upstream
   pointLight(255, 255, 255, width/2*sin((float)time/10), -50, 0);
   
   pushMatrix();
@@ -63,6 +73,9 @@ void draw()
   box(1000.0, 1.0, 1000.0);
   popMatrix();
   
+======= */
+  pointLight(255, 255, 255, width/2*sin((float)time/10), 50, 0);
+
   pushMatrix();
   translate(0, 50, 0);
   rotateY((float)time/2*PI);
