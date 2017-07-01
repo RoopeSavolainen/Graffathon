@@ -6,7 +6,8 @@ class Sky {
    skyShader = loadShader("sky-frag.glsl", "sky-vert.glsl");
   }
 
-  void draw(PVector cameraPos) {
+  void draw(PVector cameraPos, float intensity) {
+    skyShader.set("intensity", intensity);
     shader(skyShader);
     
     pushMatrix();
