@@ -27,7 +27,7 @@ class Terrain {
   void draw(PVector cameraPos) {
     pushMatrix();
     PVector t = new PVector(cameraPos.x - (cameraPos.x) % (GridCellSize), cameraPos.z - (cameraPos.z ) % (GridCellSize));
-    println(t);
+    //println(t);
     if(!this.isMountains) translate(-this._sizeX / 2 + t.x, 0, -this._sizeY / 2 + t.y);
     else translate(-this._sizeX / 2 + cameraPos.x, 0, -this._sizeY / 2 + cameraPos.z);
     

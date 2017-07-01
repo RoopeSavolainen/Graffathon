@@ -15,6 +15,7 @@ class CameraController
     lookAt = new PVector(0.0, 0.0, 0.0);
     movement = new MovementTracker(pos, lookAt);
     ml = _ml;
+    waypoints = new ArrayList<PVector>();
     movement.route = waypoints;
   }
   
@@ -24,13 +25,17 @@ class CameraController
     lookAt = _lookAt;
     movement = new MovementTracker(pos, lookAt);
     ml = _ml;
+    waypoints = new ArrayList<PVector>();
     movement.route = waypoints;
   }
   
-  public void setWayPoints(ArrayList<PVector> _waypoints)
+  public void addWayPoints(ArrayList<PVector> p)
   {
-    waypoints = _waypoints;
-    movement.route = waypoints;
+    if (movement.route == null)
+    {
+      movement.route = waypoints;
+    }
+    waypoints.addAll(p);
   }
   
   public void setViewTarget(PVector _target)

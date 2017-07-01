@@ -5,11 +5,10 @@ class Ship
   public PVector pos;
   private PVector direction;
   
-  private MovementTracker movement;
+  public MovementTracker movement;
   private Moonlander ml;
   
   private ArrayList<PVector> waypoints;
-  
   
   Ship(PVector _pos, Moonlander _ml)
   {
@@ -17,23 +16,22 @@ class Ship
     direction = new PVector(0.0, 0.0, 0.0);
     movement = new MovementTracker(pos, direction);
     model = loadShape("ship.obj");
-    ml = _ml;    
-  }
-  
-  public void setWayPoints(ArrayList<PVector> _waypoints)
-  {
-    waypoints = _waypoints;
+    ml = _ml;
+    waypoints = new ArrayList<PVector>();
     movement.route = waypoints;
   }
   
-  public void addWayPoint(PVector p)
+  public void addWayPoints(ArrayList<PVector> p)
   {
-    waypoints.add(p);
+    if (movement.route == null)
+    {
+      movement.route = waypoints;
+    }
+    waypoints.addAll(p);
   }
   
   void draw()
   {
-        
     float time = (float)ml.getValue("ship");
     movement.update(time);
     

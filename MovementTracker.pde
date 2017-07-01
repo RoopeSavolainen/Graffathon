@@ -8,6 +8,8 @@ class MovementTracker
   private final static int prevSize = 15;
   private ArrayDeque<PVector> prevPos;
   
+  private int lastVisited = -1;
+  
   private final static float steeringPower = 0.02;
   public float maxVel = 5;
   
@@ -30,6 +32,16 @@ class MovementTracker
     lookAt = _lookAt;
   }
   
+  public boolean isVisited(int index)
+  {
+    return index <= lastVisited;
+  }
+  
+  public boolean allVisited()
+  {
+    return route.size() <= lastVisited;
+  }
+  
   public void update(float lerpValue)
   {
     if (route.size() <= lerpValue + 1)
@@ -39,6 +51,7 @@ class MovementTracker
     
     int next = ceil(lerpValue);
     int prev = floor(lerpValue);
+    lastVisited = prev;
     
     PVector goal = route.get(next);
     PVector start = route.get(prev);

@@ -15,11 +15,12 @@ PVector cameraPos = new PVector(320, -120, -3000);
 PVector cameraLookAt = new PVector(0, 0, 0);
 
 CameraController cam;
-ArrayList<PVector> route = new ArrayList();
 
 City c = new City(0.45, 5);
 Ship s;
 ArrayList<PVector> shipRoute = new ArrayList();
+
+private Scene currentScene;
 
 void setup()
 {
@@ -56,16 +57,7 @@ void setup()
   cam = new CameraController(cameraPos, cameraLookAt, ml);
   s = new Ship(new PVector(320.0, -120.0, -2000.0), ml);
   
-  route.add(new PVector(320.0, -120.0, -3000.0));
-  route.add(new PVector(320.0, -120.0, 200.0));
-  route.add(new PVector(3000.0, -120.0, 200.0));
-  route.add(new PVector(3000.0, -120.0, 3000.0));
-  cam.setWayPoints(route);  
-
-  shipRoute.add(new PVector(320.0, -120.0, -1000.0));
-  shipRoute.add(new PVector(320.0, -120.0, 1000.0));
-  shipRoute.add(new PVector(-2000.0, -120.0, 1000.0));
-  s.setWayPoints(shipRoute);
+  currentScene = new FollowScene(cam, ac, s, c);
   
   cam.setViewTarget(s.pos);
 }
@@ -78,7 +70,11 @@ void draw()
   time = ml.getValue("time");
   background(0);
   
+  currentScene = currentScene.update();
   cam.update();
+
+  println(cam.pos.x, " : ", cam.pos.y, " : ", cam.pos.z);
+  println(cameraPos.x, " : ", cameraPos.y, " : ", cameraPos.z);
 
   directionalLight(153, 192, 255, 0.5, 1, 0.5);
   
