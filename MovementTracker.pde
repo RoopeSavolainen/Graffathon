@@ -25,8 +25,6 @@ class MovementTracker
       return;
     }
     
-    print(lerpValue, "\n");
-    
     int next = ceil(lerpValue);
     int prev = floor(lerpValue);
     
