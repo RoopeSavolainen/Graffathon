@@ -7,7 +7,8 @@
 		<track name="camera">
 			<key row="0" value="0" interpolation="1"/>
 			<key row="50" value="1" interpolation="1"/>
-			<key row="100" value="2" interpolation="0"/>
+			<key row="100" value="2" interpolation="1"/>
+			<key row="150" value="3" interpolation="0"/>
 		</track>
 	</tracks>
 	<bookmarks/>

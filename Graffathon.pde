@@ -5,10 +5,12 @@ Moonlander ml;
 Terrain terrain;
 Sky sky;
 
+AudioController ac;
+
 double time;
 PShape detailShip;
 
-PVector cameraPos = new PVector(0, 0, 0);
+PVector cameraPos = new PVector(320, -240, -3000);
 PVector cameraLookAt = new PVector(0, 0, 0);
 
 MovementTracker cam = new MovementTracker(cameraPos, cameraLookAt);
@@ -21,17 +23,20 @@ void setup()
   smooth();
   colorMode(RGB, 255);
   
-  route.add(new PVector(320.0, -240.0, -1000.0));
-  route.add(new PVector(320.0, -240.0, -100.0));
-  route.add(new PVector(640.0, -240.0, -100.0));
+  route.add(new PVector(320.0, -240.0, -3000.0));
+  route.add(new PVector(320.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 200.0));
+  route.add(new PVector(3000.0, -240.0, 3000.0));
   cam.route = route;
   
   detailShip = loadShape("ship.obj");
   terrain = new Terrain(3000, 3000);
   sky = new Sky();
 
-  ml = Moonlander.initWithSoundtrack(this, "test.mp3", 60, 4);
+  ml = new Moonlander(this, new TimeController(4));
   ml.start();
+  
+  ac = new AudioController(new Minim(this), ml);
 }
 
 void draw()
