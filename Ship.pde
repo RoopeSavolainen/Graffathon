@@ -3,7 +3,7 @@ class Ship
   private PShape model;
   
   public PVector pos;
-  private PVector direction;
+  public PVector direction;
   
   public MovementTracker movement;
   private Moonlander ml;
@@ -37,7 +37,7 @@ class Ship
     
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
-    scale(3);
+    scale(0.75);
     PVector diff = direction.copy().sub(pos);
     float rotY = atan2(diff.x, diff.z);
     rotateY(rotY);
