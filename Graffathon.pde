@@ -73,8 +73,4 @@ void draw()
 
   terrain.draw(cam);
   shipRows.draw();
-  
-  for(ShipRow shipRow : shipRows) {
-    shipRow.draw();
-  }
 }
