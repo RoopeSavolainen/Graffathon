@@ -43,8 +43,7 @@ void setup()
   le = new LineEffect();
 
   shipRows = new ShipRowManager();
-  currentScene = new CityScene(cam, ac, s, c, terrain);
-
+  currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
 }
 
 void draw()

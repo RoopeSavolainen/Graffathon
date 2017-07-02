@@ -13,31 +13,34 @@ class FollowScene extends Scene
     ArrayList<PVector> route = new ArrayList();
     route.add(new PVector(320.0, -500.0, 640.0));
     
-    route.add(new PVector(320.0, -700.0, 2000.0));
+    route.add(new PVector(320.0, -700.0, 3000.0));
     route.add(new PVector(640.0,
-                          -400.0,
-                          6150));
+                          -700.0,
+                          5900));
     route.add(new PVector(320,
                           -400.0,
-                          12000));
-    route.add(new PVector(5000,
+                          15100));
+    route.add(new PVector(4900,
                           -800.0,
-                          8000));
+                          14900));
+    route.add(new PVector(3000,
+                          -800.0,
+                          13000));
     this.camera.addWayPoints(route);
   
     ArrayList<PVector> shipRoute = new ArrayList();
     shipRoute.add(new PVector(320.0, -500.0, 320.0));
     
-    shipRoute.add(new PVector(320.0, -400.0, 2000.0));
-    shipRoute.add(new PVector(320.0,
-                              -200.0,
-                              6150));
+    shipRoute.add(new PVector(320.0, -500.0, 3000.0));
     shipRoute.add(new PVector(320,
                               -200.0,
-                              12000));
-    shipRoute.add(new PVector(1000,
+                              15100));
+    shipRoute.add(new PVector(4900,
+                              -200.0,
+                              15100));
+    shipRoute.add(new PVector(8000,
                               -800.0,
-                              8150));
+                              12050));
     this.ship.addWayPoints(shipRoute);
     
     city.setActive(true);
