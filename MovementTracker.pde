@@ -39,19 +39,19 @@ class MovementTracker
   
   public boolean allVisited()
   {
-    return route.size() <= lastVisited;
+    return route.size() - 1 <= lastVisited;
   }
   
   public void update(float lerpValue)
   {
-    if (route.size() <= lerpValue + 1)
-    {
-      return;
-    }
-    
     int next = ceil(lerpValue);
     int prev = floor(lerpValue);
     lastVisited = prev;
+    
+    if (route.size() <= next)
+    {
+      return;
+    }
     
     PVector goal = route.get(next);
     PVector start = route.get(prev);

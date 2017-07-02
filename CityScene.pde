@@ -44,7 +44,7 @@ class CityScene extends Scene {
       camera.setViewTarget(new PVector(400, 350, -10000));
     }
     if (this.camera.movement.allVisited())
-    {
+    { //<>//
       return new FollowScene(camera, audio, ship, city, terrain);
     }
     else
