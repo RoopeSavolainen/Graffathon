@@ -25,7 +25,7 @@ class StartScene extends Scene
   
   Scene update()
   {
-    float time = constrain((float)ml.getValue("ship"), 0, 1);
+    float time = constrain((float)ml.getValue("time"), 0, 1);
     
     float y = time < 0.55 ? -520 : lerp(-520, -50, slerp(0, 1, constrain((time - 0.55) * 5, 0, 1)));
     PVector cameraPos = PVector.lerp(new PVector(30, y, StartZ), new PVector(30, y, 0), slerp(0, 1, time));
