@@ -119,15 +119,22 @@ class Terrain {
         for(int x = 0; x < sizeX; x++) {
           PVector cur = new PVector(x, y);
           float distFromCenter = center.dist(cur) / (sizeX / 2);
+          if(hmapOffsetX != 0 || hmapOffsetY != 0) {
+            distFromCenter = 1;
+          }
           
           float multiplier = 10;
           float baseAdd = 0;
           isMountain[x + y * sizeX] = false;
-          if(distFromCenter > 0.6 && hmapOffsetX == 0 && hmapOffsetY == 0) {
+          if(distFromCenter > 0.6) {
             float lerpVal = (distFromCenter - 0.6) * 5;
              multiplier = lerp(10, 400,  lerpVal);
              baseAdd += lerp(0, -500, constrain(lerpVal, 0, 1));
              isMountain[x + y * sizeX] = true;
+          }
+          
+          if(hmapOffsetX != 0 || hmapOffsetY != 0) {
+            multiplier *= 0.2;
           }
           
           int testX = x + hmapOffsetX;
@@ -138,4 +145,5 @@ class Terrain {
       
       return hmap;
     }
+    
 }

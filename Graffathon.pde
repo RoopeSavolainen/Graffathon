@@ -3,8 +3,8 @@ import moonlander.library.*;
 
 Moonlander ml;
 TerrainManager terrain;
+ShipRowManager shipRows;
 Sky sky;
-ArrayList<ShipRow> shipRows = new ArrayList<ShipRow>();
 
 AudioController ac;
 
@@ -28,21 +28,7 @@ void setup()
 
   sky = new Sky();
   
-  shipRows.add(new ShipRow(new PVector(-1500, -400, 0), new PVector(0, -400, 0)));
-  shipRows.add(new ShipRow(new PVector(0, -400, -1500), new PVector(0, -400, 0)));
-  shipRows.add(new ShipRow(new PVector(-1000, -400, -1000), new PVector(0, -400, 0)));
-  
-  randomSeed(0);
-  for (int i = 1; i < 4; i++) {
-    int axis = (int)random(-10,5);
-    int start = (int)random(-20,20);
-    int goal = (int)random(-20,20);
-    shipRows.add(new ShipRow(new PVector(c.getBlockDist(axis), -200 * i, c.getBlockDist((start))),
-                             new PVector(c.getBlockDist(axis), -200 * i, c.getBlockDist((goal)))));
-    shipRows.add(new ShipRow(new PVector(c.getBlockDist(start), -200 * i, c.getBlockDist(axis)),
-                             new PVector(c.getBlockDist(goal), -200 * i, c.getBlockDist(axis))));
-  }
-
+ 
   ml = new Moonlander(this, new TimeController(10));
   ml.start();
   
@@ -52,11 +38,13 @@ void setup()
   s = new Ship(new PVector(0.0, -120.0, 0.0), ml);
   
   terrain = new TerrainManager();
-  currentScene = new FollowScene(cam, ac, s, c, terrain);
-  
   cam.setViewTarget(s.pos);
   
   le = new LineEffect();
+
+  shipRows = new ShipRowManager();
+  currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
+
 }
 
 void draw()
@@ -81,9 +69,10 @@ void draw()
   s.draw();
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
-  //sky.draw(cam.pos, skyIntensity);
+  sky.draw(cam.pos, skyIntensity);
 
-  //terrain.draw(cam);
+  terrain.draw(cam);
+  shipRows.draw();
   
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();

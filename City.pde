@@ -89,7 +89,7 @@ class House
   private float w, d, h;
   private float current_h = 0;
   
-  private final static float growSpeed = 20.0;
+  private final static float growSpeed = 5.0;
   private float prevMillis = 0;
   
   House(float _w, float _d, float _h)
