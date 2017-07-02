@@ -111,6 +111,9 @@ class FollowScene extends Scene
       {
         exit();
       }
+      
+      ac.ap.setGain(-32 * endTime / 10);
+      
       return this;
     }
     else

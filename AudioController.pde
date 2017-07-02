@@ -3,10 +3,10 @@ import ddf.minim.analysis.*;
 class AudioController {
   
   Minim minim;
-  AudioPlayer ap;
+  public AudioPlayer ap;
   FFT fft;
   
-  private float bass, mid, treble = 0;
+  private float bass, mid, treble;
   
   AudioController(Minim minim) {
     this.minim = minim;
@@ -16,9 +16,9 @@ class AudioController {
   }
   
   void update() {
-    bass = 0;
-    mid = 0;
-    treble = 0;
+    
+    
+    bass = mid = treble = 0;
     int thirdOfBand = (fft.specSize() - 120) / 3;
     
     fft.forward(ap.mix);

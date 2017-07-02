@@ -16,8 +16,6 @@ ArrayList<PVector> shipRoute = new ArrayList();
 
 private Scene currentScene;
 
-LineEffect le;
-
 void settings() {
   fullScreen(P3D);
   //size(1280, 720, P3D);
@@ -40,8 +38,6 @@ void setup()
   
   terrain = new TerrainManager();
   cam.setViewTarget(s.pos);
-  
-  le = new LineEffect();
 
   shipRows = new ShipRowManager();
   currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
@@ -56,9 +52,6 @@ void draw()
   ac.update();
   
   println(cam.pos);
-  
-  le.update();
-  le.draw();
   
   background(0);
   
