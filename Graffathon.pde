@@ -52,7 +52,7 @@ void setup()
   cam = new CameraController(new PVector(320.0, -120.0, -3000.0), new PVector(0.0, 0.0, 0.0), ml);
   s = new Ship(new PVector(320.0, -120.0, -2000.0), ml);
   
-  currentScene = new FollowScene(cam, ac, s, c);
+  currentScene = new CityScene(cam, ac, s, c);
   
   cam.setViewTarget(s.pos);
 }
