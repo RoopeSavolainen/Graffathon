@@ -1,7 +1,6 @@
 <sync rows="1200">
 	<tracks>
 		<track name="time">
-<<<<<<< Updated upstream
 			<key row="0" interpolation="1" value="0"/>
 			<key row="150" interpolation="0" value="1"/>
 			<key row="511" interpolation="0" value="64"/>
