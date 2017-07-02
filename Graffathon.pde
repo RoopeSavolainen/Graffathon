@@ -34,8 +34,8 @@ void setup()
   
   ac = new AudioController(new Minim(this));
   
-  cam = new CameraController(new PVector(0.0, -240.0, 0.0), new PVector(0.0, 0.0, 0.0), ml);
-  s = new Ship(new PVector(0.0, -120.0, 0.0), ml);
+  cam = new CameraController(new PVector(320.0, -240.0, 640.0), new PVector(0.0, 0.0, 0.0), ml);
+  s = new Ship(new PVector(320.0, -120.0, 320.0), ml);
   
   terrain = new TerrainManager();
   cam.setViewTarget(s.pos);
@@ -43,8 +43,7 @@ void setup()
   le = new LineEffect();
 
   shipRows = new ShipRowManager();
-  currentScene = new CityScene(cam, ac, s, c, terrain);
-
+  currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
 }
 
 void draw()

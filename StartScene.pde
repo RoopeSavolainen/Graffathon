@@ -29,9 +29,9 @@ class StartScene extends Scene
     
     float y = time < 0.55 ? -520 : lerp(-520, -50, slerp(0, 1, constrain((time - 0.55) * 5, 0, 1)));
     PVector cameraPos = PVector.lerp(new PVector(30, y, StartZ), new PVector(30, y, 0), slerp(0, 1, time));
-    camera.pos = cameraPos;
-    ship.pos = PVector.lerp(new PVector(0, -120, StartZ), new PVector(0, -120, 0), slerp(0, 1, time));
-    camera.lookAt = new PVector(0, -120, +10000);
+    camera.pos.set(cameraPos);
+    ship.pos.set(PVector.lerp(new PVector(0, -120, StartZ), new PVector(0, -120, 0), slerp(0, 1, time)));
+    camera.lookAt.set(new PVector(0, -120, +10000));
     
     if(time > 0.75) {
        terrain.setRenderingOutside(false); 

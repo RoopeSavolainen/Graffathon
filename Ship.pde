@@ -34,6 +34,7 @@ class Ship
   {
     float time = (float)ml.getValue("ship");
     movement.update(time);
+    println(time);
     
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
