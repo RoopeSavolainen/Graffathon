@@ -2,6 +2,7 @@ class CityScene extends Scene {
   CityScene(CameraController camera, AudioController audio, Ship ship, City city, TerrainManager terrain) {
     super(camera, audio, ship, city, terrain);
     
+      city.setActive(true);
     ArrayList<PVector> route = new ArrayList();
     float radius = 1200;
     
