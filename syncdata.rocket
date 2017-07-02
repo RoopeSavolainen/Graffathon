@@ -1,9 +1,13 @@
 <sync rows="1200">
 	<tracks>
 		<track name="time">
+<<<<<<< Updated upstream
 			<key row="0" interpolation="1" value="0"/>
 			<key row="150" interpolation="0" value="1"/>
 			<key row="511" interpolation="0" value="64"/>
+			<key row="512" value="0" interpolation="0"/>
+			<key row="925" value="0" interpolation="1"/>
+			<key row="1025" value="10" interpolation="0"/>
 		</track>
 		<track name="camera">
 			<key row="151" interpolation="1" value="0"/>
@@ -17,12 +21,13 @@
 			<key row="467" interpolation="0" value="22"/>
 			<key row="485" interpolation="1" value="22"/>
 			<key row="487" interpolation="1" value="23"/>
-			<key row="520" interpolation="1" value="16"/>
-			<key row="560" interpolation="1" value="17"/>
-			<key row="610" interpolation="1" value="18"/>
-			<key row="776" interpolation="1" value="19"/>
-			<key row="835" interpolation="1" value="20"/>
-			<key row="924" interpolation="0" value="21"/>
+
+			<key row="520" value="24" interpolation="1"/>
+			<key row="560" value="25" interpolation="1"/>
+			<key row="632" value="26" interpolation="1"/>
+			<key row="763" value="27" interpolation="1"/>
+			<key row="839" value="28" interpolation="1"/>
+			<key row="924" value="29" interpolation="0"/>
 		</track>
 		<track name="ship">
 			<key row="0" interpolation="1" value="0"/>
