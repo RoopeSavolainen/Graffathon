@@ -49,7 +49,6 @@ class City
         }
         pushMatrix();
         translate(0.0, 0.0, z * (w/density));
-        println("UPD");
         houses.get(x).get(z).update_height(active);
         houses.get(x).get(z).draw();
         popMatrix();
@@ -86,7 +85,6 @@ class City
         if (houses.get(x).get(z) == null)
         {
           float h = abs(randomGaussian() * h_stdev + h_avg);
-          println("NEW: ", h);
           houses.get(x).put(z, new House(w, w, h));
         }
       }
@@ -99,7 +97,7 @@ class House
   private float w, d, h;
   private float current_h = 0;
   
-  private final static float growSpeed = 50.0;
+  private final static float growSpeed = 20.0;
   private float prevMillis = 0;
   
   House(float _w, float _d, float _h)
