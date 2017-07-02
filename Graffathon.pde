@@ -51,7 +51,8 @@ void draw()
   ml.update();
   ac.update();
   
-  println(cam.pos);
+  le.update();
+  le.draw();
   
   background(0);
   
