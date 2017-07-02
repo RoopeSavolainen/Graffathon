@@ -105,6 +105,7 @@ class House
     w = _w;
     d = _d;
     h = _h;
+    prevMillis = millis();
   }
   void draw()
   {
