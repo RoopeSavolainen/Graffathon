@@ -10,6 +10,8 @@ class City
   private float density;
   private int blockSize;
   
+  private boolean active = false;
+  
   private HashMap<Integer, HashMap<Integer, House>> houses;
   
   City(float _density, int _block)
@@ -47,6 +49,8 @@ class City
         }
         pushMatrix();
         translate(0.0, 0.0, z * (w/density));
+        println("UPD");
+        houses.get(x).get(z).update_height(active);
         houses.get(x).get(z).draw();
         popMatrix();
       }
@@ -61,7 +65,7 @@ class City
   
   public void setActive(boolean value)
   {
-    
+    this.active = value;
   }
   
   void genHouses(float _x, float _z)
@@ -81,7 +85,8 @@ class City
       {
         if (houses.get(x).get(z) == null)
         {
-          float h = randomGaussian() * h_stdev + h_avg;
+          float h = abs(randomGaussian() * h_stdev + h_avg);
+          println("NEW: ", h);
           houses.get(x).put(z, new House(w, w, h));
         }
       }
@@ -93,19 +98,38 @@ class House
 {
   private float w, d, h;
   private float current_h = 0;
+  
+  private final static float growSpeed = 50.0;
+  private float prevMillis = 0;
+  
   House(float _w, float _d, float _h)
   {
     w = _w;
     d = _d;
-    h = -_h;
+    h = _h;
   }
   void draw()
   {
+    if (abs(current_h) < 0.01)
+    {
+      return;
+    }
     pushMatrix();
-    translate(0.0, h/2.0, 0.0);
+    translate(0.0, -current_h/2.0, 0.0);
     stroke(128, 64, 64);
-    shapeMode(CENTER);
-    box(w,h,d);
+    shapeMode(CORNER);
+    box(w,current_h,d);
     popMatrix();
+  }
+  void update_height(boolean active)
+  {
+    if (this.current_h >= this.h)
+    {
+      return;
+    }
+    
+    float coeff = active ? 1 : -1;
+    current_h += coeff * growSpeed * (millis()-prevMillis)/1000.0;
+    current_h = constrain(current_h, 0, h);
   }
 }

@@ -17,6 +17,8 @@ class FollowScene extends Scene
     shipRoute.add(new PVector(320.0, -120.0, 1000.0));
     shipRoute.add(new PVector(-2000.0, -120.0, 1000.0));
     this.ship.addWayPoints(shipRoute);
+    
+    city.setActive(true);
   }
   
   Scene update()
