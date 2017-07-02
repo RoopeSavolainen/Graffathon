@@ -19,7 +19,7 @@ private Scene currentScene;
 LineEffect le;
 
 void settings() {
-  fullScreen();
+  fullScreen(P3D);
   //size(1280, 720, P3D);
 }
 
