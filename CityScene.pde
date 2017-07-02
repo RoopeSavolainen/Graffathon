@@ -3,31 +3,46 @@ class CityScene extends Scene {
     super(camera, audio, ship, city, terrain);
     
     ArrayList<PVector> route = new ArrayList();
-    route.add(new PVector(0.0, -1000.0, 500.0));
-    route.add(new PVector(250.0, -900.0, 250.0));
-    route.add(new PVector(500.0, -800.0, 0.0));
-    route.add(new PVector(250.0, -700.0, -250.0));
+    float radius = 1200;
     
-    route.add(new PVector(0.0, -600.0, -500.0));
-    route.add(new PVector(-250.0, -500.0, -250.0));
-    route.add(new PVector(-500.0, -450.0, 0.0));
-    route.add(new PVector(-250.0, -400.0, 250.0));
+    route.add(new PVector(0.0, -1200.0, radius));
+    route.add(new PVector(radius/4, -1150.0, 3*radius/4));
+    route.add(new PVector(radius/2, -1100.0, radius/2));
+    route.add(new PVector(3*radius/4, -1050.0, radius/4));
     
-    route.add(new PVector(0.0, -500.0, 500.0));
-    route.add(new PVector(500.0, -400.0, 0.0));
-    route.add(new PVector(0.0, -300.0, -500.0));
-    route.add(new PVector(-500.0, -250.0, 0.0));
+    route.add(new PVector(radius, -1000.0, 0));
+    route.add(new PVector(3*radius/4, -950.0, -radius/4));
+    route.add(new PVector(radius/2, -900.0, -radius/2));
+    route.add(new PVector(radius/4, -850.0, -3*radius/4));
+    
+    route.add(new PVector(0.0, -800.0, -radius));
+    route.add(new PVector(-radius/4, -750.0, -3*radius/4));
+    route.add(new PVector(-radius/2, -700.0, -radius/2));
+    route.add(new PVector(-3*radius/4, -650.0, -radius/4));
+    
+    route.add(new PVector(-radius, -600.0, 0));
+    route.add(new PVector(-3*radius/4, -550.0, radius/4));
+    route.add(new PVector(-radius/2, -500.0, radius/2));
+    route.add(new PVector(-radius/4, -450.0, 3*radius/4));
+    route.add(new PVector(0.0, -400.0, radius));
+    
+    route.add(new PVector(400.0, -350.0, -1200));
+    
+    
     
     this.camera.addWayPoints(route);
     camera.setViewTarget(new PVector(0, 0, 0));
   
     ArrayList<PVector> shipRoute = new ArrayList();
     shipRoute.add(new PVector(0, 0, 0));
+    shipRoute.add(new PVector(0, 0, 0));
     this.ship.addWayPoints(shipRoute);
   }
   
   Scene update() {
-    camera.setViewTarget(new PVector(0, 0, 0));
+    if (this.camera.movement.isVisited(15)) {
+      camera.setViewTarget(new PVector(400, 350, -10000));
+    }
     if (this.camera.movement.allVisited())
     {
       return new FollowScene(camera, audio, ship, city, terrain);
