@@ -18,17 +18,17 @@ private Scene currentScene;
 
 LineEffect le;
 
+void settings() {
+  size(1280, 720, P3D);
+}
+
 void setup()
 {
-  size(1280, 720, P3D);
   frameRate(60);
   smooth();
   colorMode(RGB, 255);
-
-
   sky = new Sky();
   
- 
   ml = new Moonlander(this, new TimeController(10));
   ml.start();
   
@@ -50,6 +50,8 @@ void draw()
 {
   ml.update();
   ac.update();
+  
+  println(cam.pos);
   
   le.update();
   le.draw();

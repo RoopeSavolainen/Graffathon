@@ -1,42 +1,38 @@
 <sync rows="1200">
 	<tracks>
 		<track name="time">
-			<key row="0" value="0" interpolation="1"/>
-			<key row="150" value="1" interpolation="0"/>
-			<key row="511" value="64" interpolation="0"/>
+			<key row="0" interpolation="1" value="0"/>
+			<key row="150" interpolation="0" value="1"/>
+			<key row="511" interpolation="0" value="64"/>
 		</track>
 		<track name="camera">
-			<key row="151" value="0" interpolation="1"/>
-			<key row="155" value="1" interpolation="1"/>
-			<key row="159" value="2" interpolation="1"/>
-			<key row="163" value="3" interpolation="1"/>
-			<key row="167" value="4" interpolation="1"/>
-			<key row="171" value="5" interpolation="1"/>
-			<key row="175" value="6" interpolation="1"/>
-			<key row="179" value="7" interpolation="1"/>
-			<key row="183" value="8" interpolation="1"/>
-			<key row="187" value="9" interpolation="1"/>
-			<key row="191" value="10" interpolation="1"/>
-			<key row="195" value="11" interpolation="1"/>
-			<key row="199" value="12" interpolation="1"/>
-			<key row="203" value="13" interpolation="1"/>
-			<key row="207" value="14" interpolation="1"/>
-			<key row="211" value="15" interpolation="0"/>
-			<key row="520" value="16" interpolation="1"/>
-			<key row="560" value="17" interpolation="1"/>
-			<key row="610" value="18" interpolation="1"/>
-			<key row="776" value="19" interpolation="1"/>
-			<key row="835" value="20" interpolation="1"/>
-			<key row="924" value="21" interpolation="0"/>
+			<key row="151" interpolation="1" value="0"/>
+			<key row="224" interpolation="1" value="16"/>
+			<key row="256" interpolation="1" value="17"/>
+			<key row="298" interpolation="0" value="18"/>
+			<key row="372" interpolation="1" value="19"/>
+			<key row="446" interpolation="1" value="20"/>
+			<key row="448" interpolation="0" value="21"/>
+			<key row="465" interpolation="1" value="21"/>
+			<key row="467" interpolation="0" value="22"/>
+			<key row="485" interpolation="1" value="22"/>
+			<key row="487" interpolation="1" value="23"/>
+			<key row="520" interpolation="1" value="16"/>
+			<key row="560" interpolation="1" value="17"/>
+			<key row="610" interpolation="1" value="18"/>
+			<key row="776" interpolation="1" value="19"/>
+			<key row="835" interpolation="1" value="20"/>
+			<key row="924" interpolation="0" value="21"/>
 		</track>
 		<track name="ship">
-			<key row="0" value="0" interpolation="1"/>
-			<key row="150" value="1" interpolation="0"/>
-			<key row="520" value="16" interpolation="1"/>
-			<key row="575" value="17" interpolation="1"/>
-			<key row="758" value="18" interpolation="1"/>
-			<key row="835" value="19" interpolation="1"/>
-			<key row="924" value="20" interpolation="0"/>
+			<key row="0" interpolation="1" value="0"/>
+			<key row="150" interpolation="0" value="1"/>
+			<key row="151" interpolation="0" value="0"/>
+			<key row="520" interpolation="1" value="16"/>
+			<key row="575" interpolation="1" value="17"/>
+			<key row="758" interpolation="1" value="18"/>
+			<key row="835" interpolation="1" value="19"/>
+			<key row="924" interpolation="0" value="20"/>
 		</track>
 	</tracks>
 	<bookmarks/>
