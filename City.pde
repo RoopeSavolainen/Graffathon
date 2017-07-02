@@ -5,7 +5,7 @@ class City
   private final static float h_avg = 150;
   private final static float h_stdev = 100;
   
-  private final static int drawAmount = 25;
+  private final static int drawAmount = 35;
   
   private float density;
   private int blockSize;
