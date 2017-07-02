@@ -35,20 +35,12 @@ class City
     
     for (int x = x_index - drawAmount; x < x_index + drawAmount; x++)
     {
-      /*if (x % (blockSize+1) == 0)
-      {
-        continue;
-      }*/
       pushMatrix();
-      translate((x + floor(x/blockSize)) * (w/density), 0.0, 0.0);
+      translate((x + floor(x/(blockSize + 1))) * (w/density), 0.0, 0.0);
       for (int z = z_index - drawAmount; z < z_index + drawAmount; z++)
       {
-        /*if (z % (blockSize+1) == 0)
-        {
-          continue;
-        }*/
         pushMatrix();
-        translate(0.0, 0.0, (z + floor(z/blockSize)) * (w/density));
+        translate(0.0, 0.0, (z + floor(z/(blockSize + 1))) * (w/density));
         houses.get(x).get(z).update_height(active);
         houses.get(x).get(z).draw();
         popMatrix();
@@ -59,7 +51,7 @@ class City
   
   public float getBlockDist(int n)
   {
-    return w/density * ((float)blockSize * n - 0.5);
+    return w/density * ((blockSize+1) * n - 0.5) + w;
   }
   
   public void setActive(boolean value)
@@ -73,10 +65,6 @@ class City
     int z_index = floor(_z / (w/density));
     x_index -= floor(x_index/(blockSize+1)) * (x_index < 0 ? -1 : 1);
     z_index -= floor(z_index/(blockSize+1)) * (x_index < 0 ? -1 : 1);
-    
-    println(_x, " : ", x_index);
-    println(_z, " : ", z_index);
-    println();
     
     for (int x = x_index - drawAmount; x < x_index + drawAmount; x++)
     {

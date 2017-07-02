@@ -46,11 +46,11 @@ void setup()
   
   ac = new AudioController(new Minim(this));
   
-  cam = new CameraController(new PVector(0, -120.0, 2000.0), new PVector(0.0, 0.0, 0.0), ml);
-  s = new Ship(new PVector(0, -120.0, 3000.0), ml);
+  cam = new CameraController(new PVector(0.0, -240.0, 0.0), new PVector(0.0, 0.0, 0.0), ml);
+  s = new Ship(new PVector(0.0, -120.0, 0.0), ml);
   
   terrain = new TerrainManager();
-  currentScene = new StartScene(cam, ac, s, c, terrain);
+  currentScene = new FollowScene(cam, ac, s, c, terrain);
   
   cam.setViewTarget(s.pos);
 }
