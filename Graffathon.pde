@@ -2,8 +2,7 @@ import ddf.minim.*;
 import moonlander.library.*;
 
 Moonlander ml;
-Terrain grid;
-Terrain mountains;
+TerrainManager terrain;
 Sky sky;
 ArrayList<ShipRow> shipRows = new ArrayList<ShipRow>();
 
@@ -24,8 +23,6 @@ void setup()
   smooth();
   colorMode(RGB, 255);
 
-  grid = new Terrain(6000, 6000, false);
-  mountains = new Terrain(6000, 6000, true);
 
   sky = new Sky();
   
@@ -49,10 +46,11 @@ void setup()
   
   ac = new AudioController(new Minim(this));
   
-  cam = new CameraController(new PVector(320.0, -120.0, -3000.0), new PVector(0.0, 0.0, 0.0), ml);
-  s = new Ship(new PVector(320.0, -120.0, -2000.0), ml);
+  cam = new CameraController(new PVector(0, -120.0, 2000.0), new PVector(0.0, 0.0, 0.0), ml);
+  s = new Ship(new PVector(0, -120.0, 3000.0), ml);
   
-  currentScene = new FollowScene(cam, ac, s, c);
+  terrain = new TerrainManager();
+  currentScene = new StartScene(cam, ac, s, c, terrain);
   
   cam.setViewTarget(s.pos);
 }
@@ -78,8 +76,7 @@ void draw()
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
   sky.draw(cam.pos, skyIntensity);
 
-  grid.draw(cam.pos);
-  mountains.draw(cam.pos);
+  terrain.draw(cam);
   
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();

@@ -1,9 +1,9 @@
 class FollowScene extends Scene
 {
 
-  FollowScene(CameraController camera, AudioController audio, Ship ship, City city)
+  FollowScene(CameraController camera, AudioController audio, Ship ship, City city, TerrainManager terrain)
   {
-    super(camera, audio, ship, city);
+    super(camera, audio, ship, city, terrain);
     
     ArrayList<PVector> route = new ArrayList();
     route.add(new PVector(320.0, -120.0, -3000.0));
@@ -25,7 +25,7 @@ class FollowScene extends Scene
   {
     if (this.ship.movement.allVisited())
     {
-      return new FollowScene(camera, audio, ship, city);
+      return new FollowScene(camera, audio, ship, city, terrain);
     }
     else
     {
