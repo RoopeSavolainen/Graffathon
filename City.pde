@@ -74,9 +74,11 @@ class City
     x_index -= floor(x_index/(blockSize+1)) * (x_index < 0 ? -1 : 1);
     z_index -= floor(z_index/(blockSize+1)) * (x_index < 0 ? -1 : 1);
     
+    /*
     println(_x, " : ", x_index);
     println(_z, " : ", z_index);
     println();
+    */
     
     for (int x = x_index - drawAmount; x < x_index + drawAmount; x++)
     {
