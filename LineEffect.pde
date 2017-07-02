@@ -18,13 +18,11 @@ class LineEffect {
       millisCounter -= elapsedTime; 
       return;
     }
-    println("yee");
     millisCounter = (60 / 128) * 1000;
     lines.clear();
     //randomSeed(0);
     for (int i = 0; i < 50; i++) {
       lines.add(new PVector(random(-maxX, maxX), 0, random(-maxZ, maxZ)));
-      println(lines.get(lines.size()-1));
     }
   }
   
