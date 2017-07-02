@@ -1,16 +1,30 @@
 <sync rows="1200">
 	<tracks>
 		<track name="time">
-			<key value="1" interpolation="1" row="0"/>
-			<key value="64" interpolation="0" row="511"/>
+			<key row="0" value="1" interpolation="1"/>
+			<key row="511" value="64" interpolation="0"/>
 		</track>
 		<track name="camera">
-			<key value="0" interpolation="1" row="0"/>
-			<key value="1" interpolation="0" row="150"/>
+			<key row="151" value="0" interpolation="1"/>
+			<key row="155" value="1" interpolation="1"/>
+			<key row="159" value="2" interpolation="1"/>
+			<key row="163" value="3" interpolation="1"/>
+			<key row="167" value="4" interpolation="1"/>
+			<key row="171" value="5" interpolation="1"/>
+			<key row="175" value="6" interpolation="1"/>
+			<key row="179" value="7" interpolation="1"/>
+			<key row="183" value="8" interpolation="1"/>
+			<key row="187" value="9" interpolation="1"/>
+			<key row="191" value="10" interpolation="1"/>
+			<key row="195" value="11" interpolation="1"/>
+			<key row="199" value="12" interpolation="1"/>
+			<key row="203" value="13" interpolation="1"/>
+			<key row="207" value="14" interpolation="1"/>
+			<key row="211" value="15" interpolation="0"/>
 		</track>
 		<track name="ship">
-			<key value="0" interpolation="1" row="0"/>
-			<key value="1" interpolation="0" row="150"/>
+			<key row="0" value="0" interpolation="1"/>
+			<key row="150" value="1" interpolation="0"/>
 		</track>
 	</tracks>
 	<bookmarks/>

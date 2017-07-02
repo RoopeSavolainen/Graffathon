@@ -44,13 +44,10 @@ class StartScene extends Scene
       city.setActive(true);
     }
     if(time > 0.999) {
-     terrain.setMountainsStatic(true);
-    return new FollowScene(camera, audio, ship, city, terrain);
+      terrain.setMountainsStatic(true);
+      return new CityScene(camera, audio, ship, city, terrain);
     }
     
-   // rect(cameraPos.x
-  // if(time 
-  
     return this;
   }
   

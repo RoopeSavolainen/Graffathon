@@ -43,7 +43,7 @@ void setup()
   le = new LineEffect();
 
   shipRows = new ShipRowManager();
-  currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
+  currentScene = new CityScene(cam, ac, s, c, terrain);
 
 }
 
@@ -60,17 +60,17 @@ void draw()
   currentScene = currentScene.update();
   cam.update();
 
-  directionalLight(153, 192, 255, 0.5, 1, 0.5);
+  //directionalLight(153, 192, 255, 0.5, 1, 0.5);
   
-  float f = (ac.getBassIntensity() > 0.3 ? pow(ac.getBassIntensity(), 0.5) : 0.1); // * ac.getBassIntensity();
-  float ambient = f * 255;
-  ambientLight(ambient, ambient, ambient);
+  //float f = (ac.getBassIntensity() > 0.3 ? pow(ac.getBassIntensity(), 0.5) : 0.1); // * ac.getBassIntensity();
+  //float ambient = f * 255;
+  //ambientLight(ambient, ambient, ambient);
   c.draw(cam.pos);
   s.draw();
 
-  float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
-  sky.draw(cam.pos, skyIntensity);
+  //float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
+  //sky.draw(cam.pos, skyIntensity);
 
-  terrain.draw(cam);
+  //terrain.draw(cam);
   shipRows.draw();
 }
