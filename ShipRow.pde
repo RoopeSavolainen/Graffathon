@@ -20,7 +20,7 @@ class DumbShip {
 }
 
 class ShipRow {
-  public static final float BaseSpeed = 20;
+  public static final float BaseSpeed = 40;
   
   public final PVector from, to;
   public final float dist;

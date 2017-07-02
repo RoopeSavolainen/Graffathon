@@ -36,7 +36,7 @@ class StartScene extends Scene
     if(time > 0.75) {
        terrain.setRenderingOutside(false); 
     }
-    if(time > 0.92) {
+    if(time > 0.93) {
       shipRows.setIsVisible(true);
     }
     

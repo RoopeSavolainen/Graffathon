@@ -4,9 +4,9 @@ class ShipRowManager {
   boolean visible = true;
   
   ShipRowManager() {
-      shipRows.add(new ShipRow(new PVector(-1500, -400, 0), new PVector(0, -400, 0)));
-      shipRows.add(new ShipRow(new PVector(0, -400, -1500), new PVector(0, -400, 0)));
-      shipRows.add(new ShipRow(new PVector(-1000, -400, -1000), new PVector(0, -400, 0)));
+      shipRows.add(new ShipRow(new PVector(-1550, -360, -40), new PVector(500, -360, -40)));
+      shipRows.add(new ShipRow(new PVector(-40, -400, -1500), new PVector(-40, -400, 500)));
+      shipRows.add(new ShipRow(new PVector(-1000, -380, -1000), new PVector(400, -380, 400)));
       
       for (int i = 1; i < 4; i++) {
         int axis = (int)random(-10,5);
