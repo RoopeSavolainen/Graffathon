@@ -11,13 +11,15 @@ class FollowScene extends Scene
     //this.ship.direction = new PVector(305.0, -400.0, 6150.0);
     
     ArrayList<PVector> route = new ArrayList();
-    route.add(new PVector(320.0, -500.0, 320.0));
-    route.add(new PVector(320.0,
+    route.add(new PVector(320.0, -500.0, 640.0));
+    
+    route.add(new PVector(320.0, -700.0, 2000.0));
+    route.add(new PVector(640.0,
                           -400.0,
                           6150));
-    route.add(new PVector(3000,
+    route.add(new PVector(320,
                           -400.0,
-                          6150));
+                          12000));
     route.add(new PVector(5000,
                           -800.0,
                           8000));
@@ -25,12 +27,14 @@ class FollowScene extends Scene
   
     ArrayList<PVector> shipRoute = new ArrayList();
     shipRoute.add(new PVector(320.0, -500.0, 320.0));
+    
+    shipRoute.add(new PVector(320.0, -400.0, 2000.0));
     shipRoute.add(new PVector(320.0,
                               -200.0,
                               6150));
-    shipRoute.add(new PVector(3000,
+    shipRoute.add(new PVector(320,
                               -200.0,
-                              6150));
+                              12000));
     shipRoute.add(new PVector(1000,
                               -800.0,
                               8150));
