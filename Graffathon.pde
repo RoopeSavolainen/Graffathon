@@ -52,7 +52,7 @@ void setup()
   s = new Ship(new PVector(0, -120.0, 3000.0), ml);
   
   terrain = new TerrainManager();
-  currentScene = new StartScene(cam, ac, s, c, terrain);
+  currentScene = new CityScene(cam, ac, s, c, terrain);
   
   cam.setViewTarget(s.pos);
   
@@ -81,9 +81,9 @@ void draw()
   s.draw();
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
-  //sky.draw(cam.pos, skyIntensity);
+  sky.draw(cam.pos, skyIntensity);
 
-  //terrain.draw(cam);
+  terrain.draw(cam);
   
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
