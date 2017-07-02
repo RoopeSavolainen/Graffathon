@@ -93,15 +93,15 @@ class FollowScene extends Scene
       if (endTime >= 3.5)
       {
         textSize(48);
-        text("impliedfeline", 640, height-64);
+        text("impliedfeline", width-360, height-64);
       }
       if (endTime >= 3.7)
       {
-        text("ruuben", 640, height-192);
+        text("ruuben", width-360, height-192);
       }
       if (endTime >= 3.9)
       {
-        text("flai", 640, height-320);
+        text("flai", width-360, height-320);
       }
       if (endTime >= 5.0)
       {
