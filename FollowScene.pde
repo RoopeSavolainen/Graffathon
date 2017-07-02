@@ -87,7 +87,7 @@ class FollowScene extends Scene
       {
         fill(0, 0, 0);
         textSize(72);
-        text("Demon nimi", 96, 96);
+        text("Heart of Neon", 138, 96);
         text("GNU/Konala", 240, 280);
       }
       if (endTime >= 3.5)
@@ -105,7 +105,7 @@ class FollowScene extends Scene
       }
       if (endTime >= 5.0)
       {
-        text("Music: Kevin MacLeod - Exit the Premises", 32, height-96);
+        text("Music: Kevin MacLeod - Exit the Premises", 22, height-96);
       }
       if (endTime >= 10.0)
       {
