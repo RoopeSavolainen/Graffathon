@@ -41,6 +41,7 @@ class Ship
     PVector diff = direction.copy().sub(pos);
     float rotY = atan2(diff.x, diff.z);
     rotateY(rotY);
+    shape(model);
     popMatrix();
   }  
 }
