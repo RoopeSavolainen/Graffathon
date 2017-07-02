@@ -1,6 +1,6 @@
 class StartScene extends Scene
 {
-  private static final float StartZ = -10000;
+  private static final float StartZ = -8000;
   private ShipRowManager shipRows;
   StartScene(CameraController camera, AudioController audio, Ship ship, City city, TerrainManager terrain, ShipRowManager shipRow)
   {
@@ -27,7 +27,7 @@ class StartScene extends Scene
   {
     float time = constrain((float)ml.getValue("time"), 0, 1);
     
-    float y = time < 0.55 ? -520 : lerp(-520, -50, slerp(0, 1, constrain((time - 0.55) * 5, 0, 1)));
+    float y = time < 0.48 ? -520 : lerp(-520, -50, slerp(0, 1, constrain((time - 0.48) * 4.5, 0, 1)));
     PVector cameraPos = PVector.lerp(new PVector(30, y, StartZ), new PVector(30, y, 0), slerp(0, 1, time));
     camera.pos.set(cameraPos);
     ship.pos.set(PVector.lerp(new PVector(0, -120, StartZ), new PVector(0, -120, 0), slerp(0, 1, time)));
