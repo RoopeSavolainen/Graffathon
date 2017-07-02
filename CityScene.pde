@@ -36,8 +36,6 @@ class CityScene extends Scene {
     route.add(new PVector(-320, -100, -320));
     route.add(new PVector(0, -1200, 0));
     
-    
-    
     this.camera.addWayPoints(route);
     camera.setViewTarget(new PVector(0, 50, 0));
   
@@ -46,7 +44,7 @@ class CityScene extends Scene {
     this.ship.addWayPoints(shipRoute);
   }
   
-  Scene update() {
+  Scene update() { //<>//
     if (this.camera.movement.isVisited(16)) {
       camera.setViewTarget(new PVector(100, -200, 0));
     }
@@ -66,7 +64,7 @@ class CityScene extends Scene {
     }
       
     if (this.camera.movement.allVisited())
-    { //<>//
+    {
       return new FollowScene(camera, audio, ship, city, terrain);
     }
     else
