@@ -16,6 +16,8 @@ ArrayList<PVector> shipRoute = new ArrayList();
 
 private Scene currentScene;
 
+LineEffect le;
+
 void setup()
 {
   size(1280, 720, P3D);
@@ -53,12 +55,17 @@ void setup()
   currentScene = new FollowScene(cam, ac, s, c, terrain);
   
   cam.setViewTarget(s.pos);
+  
+  le = new LineEffect();
 }
 
 void draw()
 {
   ml.update();
   ac.update();
+  
+  le.update();
+  le.draw();
   
   background(0);
   
@@ -74,9 +81,9 @@ void draw()
   s.draw();
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
-  sky.draw(cam.pos, skyIntensity);
+  //sky.draw(cam.pos, skyIntensity);
 
-  terrain.draw(cam);
+  //terrain.draw(cam);
   
   for(ShipRow shipRow : shipRows) {
     shipRow.draw();
