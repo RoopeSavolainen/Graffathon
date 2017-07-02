@@ -51,9 +51,6 @@ void draw()
   ml.update();
   ac.update();
   
-  le.update();
-  le.draw();
-  
   background(0);
   
   currentScene = currentScene.update();
