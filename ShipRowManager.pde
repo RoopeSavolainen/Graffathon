@@ -8,7 +8,6 @@ class ShipRowManager {
       shipRows.add(new ShipRow(new PVector(0, -400, -1500), new PVector(0, -400, 0)));
       shipRows.add(new ShipRow(new PVector(-1000, -400, -1000), new PVector(0, -400, 0)));
       
-      randomSeed(0);
       for (int i = 1; i < 4; i++) {
         int axis = (int)random(-10,5);
         int start = (int)random(-20,20);

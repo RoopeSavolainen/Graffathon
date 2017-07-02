@@ -61,8 +61,7 @@ class ShipRow {
   }  
   
   void generateShips() {
-     for(int i = 0; i < count; i++) {  
-        randomSeed(i);
+     for(int i = 0; i < count; i++) {
         float width = random(2.5, 4);
         float height = random(1.2, 2);
         float depth = random(5, 10);

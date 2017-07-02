@@ -107,6 +107,7 @@ class House
     }
     pushMatrix();
     translate(0.0, -current_h/2.0, 0.0);
+    fill(color(24, 24, 64));
     stroke(128, 64, 64);
     shapeMode(CORNER);
     box(w,current_h,d);
