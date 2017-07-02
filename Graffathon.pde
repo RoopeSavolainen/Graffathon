@@ -44,6 +44,9 @@ void setup()
 
   shipRows = new ShipRowManager();
   currentScene = new StartScene(cam, ac, s, c, terrain, shipRows);
+  
+  int SEED = 0;
+  randomSeed(SEED);
 }
 
 void draw()
@@ -64,12 +67,13 @@ void draw()
   float f = (ac.getBassIntensity() > 0.3 ? pow(ac.getBassIntensity(), 0.5) : 0.1); // * ac.getBassIntensity();
   float ambient = f * 255;
   ambientLight(ambient, ambient, ambient);
-  c.draw(cam.pos);
-  s.draw();
 
   float skyIntensity = ac.getBassIntensity() > 0.3 ? constrain((ac.getBassIntensity() - 0.3) / 0.7, 0, 1)  : 0;
   sky.draw(cam.pos, skyIntensity);
 
   terrain.draw(cam);
+  c.draw(cam.pos);
+  s.draw();
   shipRows.draw();
+  
 }
