@@ -5,10 +5,10 @@ varying vec4 vertPos;
 void main() {
   vec3 from, to;
   float lerp_v;
-  lerp_v = clamp((-vertPos.y + 0) / 1800.0, -1, 1.0);
-  if(lerp_v > 0) lerp_v = pow(lerp_v, 0.75) / 2 + 0.5;
+  lerp_v = clamp((-vertPos.y + 0) / 1800.0, -1.0, 1.0);
+  if(lerp_v > 0) lerp_v = pow(lerp_v, 0.75) / 2.0 + 0.5;
   else {
-     lerp_v = 0.5 - pow(-lerp_v, 0.75) / 2;
+     lerp_v = 0.5 - pow(-lerp_v, 0.75) / 2.0;
   }
 
   from = vec3(255 / 255.0 * 2, 100 / 255.0 * 2, 116 / 255.0 * 2) * 1;

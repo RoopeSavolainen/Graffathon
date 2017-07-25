@@ -17,7 +17,7 @@ ArrayList<PVector> shipRoute = new ArrayList();
 private Scene currentScene;
 
 void settings() {
-  fullScreen(P3D);
+  fullScreen(P3D,1);
   //size(1280, 720, P3D);
 }
 
